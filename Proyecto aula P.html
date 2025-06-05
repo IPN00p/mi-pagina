@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Proyecto: El Uso Correcto de la Inteligencia Artificial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --accent-color: #28a745;
+            --background-light: #f8f9fa;
+            --background-medium: #e9ecef;
+            --text-dark: #343a40;
+            --text-light: #ffffff;
+            --border-color: #dee2e6;
+            --shadow-light: rgba(0, 0, 0, 0.08);
+            --shadow-medium: rgba(0, 0, 0, 0.15);
+            --ipn-guinda: #670036;
+            --ipn-oro: #B28900;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-light);
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .school-header {
+            background-color: var(--ipn-guinda);
+            color: var(--text-light);
+            padding: 10px 20px;
+            border-bottom: 3px solid var(--ipn-oro);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-logo-left, .header-logo-right {
+            flex-shrink: 0;
+        }
+
+        .header-text-content {
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .school-header .header-text-content p {
+            margin: 3px 0;
+        }
+        .school-header .institution-name {
+            font-size: 1.2em;
+            font-weight: 700;
+        }
+        .school-header .campus-name {
+            font-size: 1em;
+            font-weight: 500;
+        }
+
+
+        .header-hero {
+            background: linear-gradient(to right, #0056b3, #007bff);
+            color: var(--text-light);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            box-shadow: 0 8px 20px var(--shadow-medium);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .header-hero h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .header-hero p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: -40px auto 40px auto;
+            background-color: var(--text-light);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px var(--shadow-medium);
+            position: relative;
+            z-index: 1;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 600;
+            position: relative;
+        }
+        h2::after, h3::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+        h4::after, h5::after, h6::after {
+            content: none;
+        }
+
+
+        hr {
+            border: none;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--primary-color), rgba(0, 0, 0, 0));
+            margin: 40px 0;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 30px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px var(--shadow-light);
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out;
+        }
+        img:hover {
+            transform: scale(1.02);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            box-shadow: 0 2px 10px var(--shadow-light);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        table, th, td {
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            text-align: left;
+        }
+        th {
+            background-color: var(--primary-color);
+            font-weight: 600;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+        tr:nth-child(even) {
+            background-color: var(--background-light);
+        }
+        tr:hover {
+            background-color: var(--background-medium);
+        }
+
+        .smartart-placeholder, .chart-placeholder { /* .smartart-placeholder aún podría ser usado en otro lugar, así que lo dejo */
+            background-color: var(--background-medium);
+            border: 2px dashed var(--accent-color);
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+            font-style: italic;
+            color: var(--secondary-color);
+            border-radius: 10px;
+            box-shadow: 0 2px 8px var(--shadow-light);
+            transition: all 0.3s ease-in-out;
+        }
+        .smartart-placeholder:hover, .chart-placeholder:hover {
+            background-color: #d8f5d8;
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px var(--shadow-medium);
+        }
+
+        .moving-text-container {
+            background-color: var(--background-medium);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 8px var(--shadow-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .moving-text {
+            display: inline-block;
+            white-space: nowrap;
+            animation: moveText 25s linear infinite;
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.1em;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        @keyframes moveText {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .index {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 40px;
+            background-color: var(--background-medium);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 10px var(--shadow-light);
+        }
+        .index li {
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+        .index a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+        .index a:hover {
+            text-decoration: underline;
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+        .index a::before {
+            content: '👉 ';
+            color: var(--accent-color);
+            margin-right: 8px;
+        }
+
+        .video-link-container {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px;
+            background-color: var(--background-medium);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px var(--shadow-light);
+            border: 1px solid var(--border-color);
+        }
+        .video-link-container p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            color: var(--text-dark);
+        }
+        .video-link-container a {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px var(--shadow-light);
+        }
+        .video-link-container a:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px var(--shadow-medium);
+        }
+        .video-link-container small {
+            display: block;
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+
+        .text-content {
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+        .text-content ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+        .text-content ul li::before {
+            content: '✔️';
+            color: var(--accent-color);
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            font-weight: bold;
+        }
+
+        .back-to-top {
+            display: block;
+            text-align: center;
+            margin-top: 40px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        .back-to-top:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            will-change: opacity, transform;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #scrollToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 1.5em;
+            box-shadow: 0 4px 12px var(--shadow-medium);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        #scrollToTopBtn:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+
+        /* Estilos para la sección de autores */
+        .project-authors {
+            text-align: center;
+            margin-top: 40px; 
+            padding: 20px 0; 
+            border-top: 1px solid var(--border-color); 
+        }
+
+        .project-authors h4 {
+            color: var(--primary-color); 
+            font-weight: 600;
+            margin-bottom: 15px; 
+            font-size: 1.2em; 
+        }
+        .project-authors h4::after { /* Aseguramos que no herede la línea de otros h4 */
+            content: none;
+        }
+
+        .project-authors ul {
+            list-style: none; 
+            padding: 0;
+            margin: 0;
+        }
+
+        .project-authors li {
+            color: var(--secondary-color); 
+            margin-bottom: 8px; 
+            font-size: 1em; 
+        }
+
+        .project-authors li:last-child {
+            margin-bottom: 0; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="school-header">
+        <div class="header-logo-left">
+        <img src="IPN LOGO.jpg" alt="Logo Izquierdo" style="height: 50px;">
+        </div>
+        <div class="header-text-content">
+            <p class="institution-name">Instituto Politécnico Nacional</p>
+            <p class="campus-name">Centro de Estudios Científicos y Tecnológicos #11 "Wilfrido Massieu"</p>
+        </div>
+        <div class="header-logo-right">
+        <img src="Cecyt 11 logo.jpg" alt="Logo Derecho" style="height: 50px;">
+        </div>
+    </div>
+
+    <button onclick="scrollToTop()" id="scrollToTopBtn" title="Ir arriba">↑</button>
+
+    <div class="header-hero">
+        <h1>El Uso Correcto de la Inteligencia Artificial</h1>
+        <p>Ética y Responsabilidad en la Era Digital</p>
+    </div>
+
+    <div class="container">
+        <h2 id="inicio">Índice de Contenidos</h2>
+        <ul class="index">
+            <li><a href="#introduccion">1. Introducción a la IA</a></li>
+            <li><a href="#principios">2. Principios del Uso Correcto de la IA</a></li>
+            <li><a href="#beneficios">3. Beneficios de la IA Responsable</a></li>
+            <li><a href="#riesgos">4. Riesgos y Mal Uso de la IA</a></li>
+            <li><a href="#aplicaciones">5. Aplicaciones Clave y Ética</a></li>
+            <li><a href="#ejemplos">6. Ejemplos de Uso Consciente de IA</a></li>
+            <li><a href="#video">7. Video Explicativo: IA para un Mundo Mejor</a></li>
+            <li><a href="#futuro">8. El Futuro Responsable de la IA</a></li>
+            <li><a href="#bibliografia">9. Bibliografía</a></li>
+        </ul>
+
+        <hr>
+
+        <div class="moving-text-container">
+            <span class="moving-text">¡Descubre cómo podemos usar la Inteligencia Artificial de forma ética y beneficiosa para todos!</span>
+        </div>
+
+        <hr>
+
+        <section id="introduccion" class="fade-in-section">
+            <h2>1. Introducción a la Inteligencia Artificial (IA)</h2>
+            <p class="text-content">La Inteligencia Artificial (IA) se ha convertido en una de las fuerzas tecnológicas más transformadoras de nuestro tiempo, se refiere a la capacidad de las máquinas para realizar tareas que normalmente requieren inteligencia humana, como aprender, razonar, resolver problemas, percibir y comprender el lenguaje, desde asistentes de voz hasta sistemas de diagnóstico médico avanzados, la IA ya está integrada en muchos aspectos de nuestra vida diaria, sin embargo, su creciente poder y omnipresencia plantean preguntas fundamentales sobre cómo debemos usarla de manera responsable y ética para maximizar sus beneficios y minimizar sus riesgos.</p>
+
+            <img src="https://images.pexels.com/photos/10389163/pexels-photo-10389163.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Cerebro robótico con conexiones digitales" title="La Inteligencia Artificial y sus conexiones">
+            <small style="display: block; text-align: center; margin-top: 5px; color: var(--secondary-color);"><em>Imagen: Representación de una imagen hecha con la Inteligencia Artificial.</em></small>
+        </section>
+
+        <hr>
+
+        <section id="principios" class="fade-in-section">
+            <h3>2. Principios del Uso Correcto de la IA</h3>
+            <p class="text-content">Para asegurar que la IA se utilice de manera que beneficie a la sociedad, es crucial adherirse a un conjunto de principios éticos. Estos principios buscan guiar el desarrollo y la implementación de sistemas de IA, promoviendo la confianza y la sostenibilidad. Los más destacados incluyen:</p>
+            <ul>
+                <li>Transparencia y Explicabilidad: Los sistemas de IA deben ser comprensibles, permitiendo a los usuarios entender cómo toman decisiones.</li>
+                <li>Equidad y No Discriminación: La IA no debe perpetuar ni amplificar sesgos existentes, garantizando un trato justo para todos.</li>
+                <li>Responsabilidad y Rendición de Cuentas: Debe ser claro quién es responsable de las acciones y consecuencias de los sistemas de IA.</li>
+                <li>Privacidad y Seguridad de Datos: Proteger la información personal es fundamental en el diseño y operación de la IA.</li>
+                <li>Beneficencia y No Maleficencia: La IA debe ser diseñada para generar un impacto positivo y evitar causar daño.</li>
+                <li>Control Humano: Mantener la supervisión y la capacidad de intervención humana sobre los sistemas de IA críticos.</li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <section id="beneficios" class="fade-in-section">
+            <h4>3. Beneficios de la IA Responsable</h4>
+            <p class="text-content">Cuando la IA se implementa siguiendo directrices éticas, sus beneficios pueden ser vastos y transformar positivamente sectores como la salud, la educación, el medio ambiente y la economía, algunos ejemplos incluyen la mejora en el diagnóstico de enfermedades, la optimización de los recursos energéticos, la personalización del aprendizaje y la automatización de tareas repetitivas que liberan a los humanos para trabajos más creativos y complejos, un uso responsable asegura que estos avances contribuyan al bienestar general sin comprometer los valores humanos o los derechos fundamentales.</p>
+        </section>
+
+        <hr>
+
+        <section id="riesgos" class="fade-in-section">
+            <h5>4. Riesgos y Mal Uso de la IA</h5>
+            <p class="text-content">Sin una gestión adecuada, la IA puede presentar riesgos significativos, estos incluyen la propagación de desinformación a través de "deepfakes", la automatización que desplaza empleos sin crear nuevas oportunidades, la amplificación de sesgos sociales a través de algoritmos discriminatorios, la violación de la privacidad de los datos, y la posibilidad de sistemas autónomos que operen sin una supervisión humana adecuada, abordar estos riesgos requiere un marco regulatorio sólido, educación pública y un compromiso continuo con la investigación ética.</p>
+
+            <img src="https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Bloqueo de datos y seguridad digital" title="Seguridad en la era de la IA">
+            <small style="display: block; text-align: center; margin-top: 5px; color: var(--secondary-color);"><em>Imagen: Importancia de la seguridad y privacidad en el uso de la IA.</em></small>
+        </section>
+
+        <hr>
+
+        <section id="aplicaciones" class="fade-in-section">
+            <h6>5. Aplicaciones Clave de la IA y Consideraciones Éticas</h6>
+            <p class="text-content">La IA se aplica en innumerables campos, y cada uno presenta sus propios desafíos éticos:</p>
+            <ul>
+                <li>Salud: Diagnóstico asistido, desarrollo de fármacos. Ética: Precisión diagnóstica, privacidad del paciente, equidad en el acceso a la tecnología.</li>
+                <li>Educación: Tutores personalizados, plataformas de aprendizaje. Ética: Sesgos en el contenido, privacidad de datos de estudiantes, rol del docente.</li>
+                <li>Transporte: Vehículos autónomos. Ética: Responsabilidad en accidentes, seguridad, decisiones en dilemas éticos.</li>
+                <li>Finanzas: Detección de fraude, análisis de crédito. Ética: Sesgos en la aprobación de créditos, transparencia de decisiones.</li>
+                <li>Creatividad y Arte: Generación de texto e imágenes. Ética: Originalidad, derechos de autor, el concepto de autoría.</li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <section id="ejemplos" class="fade-in-section">
+            <h3>6. Ejemplos de Uso Consciente de IA</h3>
+            <p class="text-content">Para ilustrar la importancia de un uso consciente, hemos elaborado una tabla con ejemplos de aplicación responsable y sus beneficios.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Área de Aplicación</th>
+                        <th>Uso Correcto de la IA</th>
+                        <th>Impacto Positivo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Medicina</td>
+                        <td>Sistemas de IA que asisten a médicos en el diagnóstico de enfermedades raras, con supervisión humana.</td>
+                        <td>Diagnósticos más rápidos y precisos, mejora en la atención al paciente.</td>
+                    </tr>
+                    <tr>
+                        <td>Educación</td>
+                        <td>Plataformas de IA que adaptan el material de estudio al ritmo de aprendizaje de cada alumno, respetando su privacidad.</td>
+                        <td>Educación personalizada, reducción de la brecha de aprendizaje.</td>
+                    </tr>
+                    <tr>
+                        <td>Servicio al Cliente</td>
+                        <td>Chatbots de IA que resuelven consultas básicas, desviando casos complejos a agentes humanos.</td>
+                        <td>Eficiencia en la atención, mejora de la satisfacción del usuario.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <hr>
+
+            <h3>Tabla de Riesgos y Mitigaciones en el Uso de la IA</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Riesgo Potencial de la IA</th>
+                        <th>Estrategia de Mitigación</th>
+                        <th>Responsables Clave</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sesgo Algorítmico</td>
+                    <td>Validación de datos, auditorías de algoritmos, grupos de trabajo diversos.</td>
+                    <td>Desarrolladores, Científicos de Datos, Reguladores</td>
+                </tr>
+                <tr>
+                    <td>Desplazamiento Laboral</td>
+                    <td>Programas de reconversión laboral, capacitación en nuevas habilidades digitales.</td>
+                    <td>Gobiernos, Empresas, Instituciones Educativas</td>
+                </tr>
+                <tr>
+                    <td>Violación de Privacidad</td>
+                    <td>Diseño de sistemas con privacidad por defecto, cumplimiento de regulaciones (GDPR).</td>
+                    <td>Diseñadores de IA, Legisladores, Usuarios</td>
+                </tr>
+            </tbody>
+            </table>
+        </section>
+
+        <hr>
+
+        <!-- SECCIÓN "Ciclo de Desarrollo Ético de IA (SmartArt Simulado)" ELIMINADA -->
+
+        <section class="fade-in-section">
+            <h3>Percepción Pública sobre la IA (Gráfico Estadístico Simulado)</h3>
+                <IMG SRC="grafica.jpg">
+                    </section>
+
+        <hr>
+
+        <section id="video" class="fade-in-section">
+            <h2>7. Video Explicativo: IA para un Mundo Mejor</h2>
+            <div class="video-link-container">
+                <p class="text-content">Para complementar la información de este proyecto, te invitamos a ver un video explicativo sobre la inteligencia artificial.</p>
+                <p class="text-content">
+                    Haz clic en el siguiente enlace para dirigirte directamente a YouTube y ver el video:
+                </p>
+                <a href="https://youtu.be/k2cdOGTbN4s?si=8mmoMFjYnR441R-a" target="_blank" rel="noopener noreferrer">
+                    Ver Video en YouTube sobre Inteligencia Artificial
+                </a>
+                <small><em>(El video se abrirá en una nueva pestaña de tu navegador.)</em></small>
+            </div>
+        </section>
+	        <hr>
+	        <section id="futuro" class="fade-in-section">
+            <h2>8. El Futuro Responsable de la IA</h2>
+            <p class="text-content">El futuro de la IA no es una cuestión de si se desarrollará, sino de cómo lo hará. La clave está en fomentar un ecosistema donde los desarrolladores, legisladores, educadores y el público en general trabajen juntos para establecer marcos éticos sólidos y promover la alfabetización en IA, al hacerlo, podemos asegurar que esta poderosa tecnología se convierta en una herramienta para el progreso humano, la equidad y la sostenibilidad, en lugar de una fuente de nuevos desafíos y desigualdades, el uso correcto de la IA es una responsabilidad compartida que definirá el camino de nuestra sociedad en las próximas décadas.</p>
+        </section>
+	<hr>
+	<div class="video-link-container">
+                <p class="text-content">Para terminar, te invitamos a ver un video con nuestras conclusiones sobre la inteligencia artificial.</p>
+                <p class="text-content">
+                    Haz clic en el siguiente enlace para dirigirte directamente a YouTube y ver el video:
+                </p>
+                <a href="https://youtube.com/shorts/oheNcjYR6yk?si=DZthqNoNSFmApiZT" target="_blank" rel="noopener noreferrer">
+                    Ver Video en YouTube sobre Inteligencia Artificial
+                </a>
+                <small><em>(El video se abrirá en una nueva pestaña de tu navegador.)</em></small>
+            </div>
+        </section> <!-- Esta etiqueta </section> estaba así en el código original, podría ser un error de anidación previo. -->
+	<hr>
+	        <a href="#inicio" class="back-to-top">↑ Volver al inicio ↑</a>
+	        <hr>
+
+        <section id="bibliografia" class="fade-in-section">
+            <h2>9. Bibliografía</h2>
+            <ul class="text-content">
+                <li>Floridi, L. (2019). <em>The Ethics of AI.</em> Oxford University Press.</li>
+                <li>Russell, S., & Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach.</em> Pearson. (Referencia general sobre IA)</li>
+                <li>European Commission. (2019). <em>Ethics Guidelines for Trustworthy AI.</em> (Documento de la Comisión Europea sobre ética en IA).</li>
+                <li>Various authors. (2023). Artículos y publicaciones recientes sobre ética en IA de revistas especializadas (e.g., Nature, Science, AI & Society).</li>
+            </ul>
+        </section>
+
+        <hr> 
+
+        <div class="project-authors">
+            <h4>Realizado por:</h4>
+            <ul>
+                <li>Carmona Moreno Natalia</li>
+                <li>Hernández Capetillo Fernanda Alejandra</li>
+                <li>Montes Ángel Ivette Abigail</li>
+                <li>Ortiz Guzmán Valeria</li>
+            </ul>
+        </div>
+
+    </div> 
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        const fadeInSections = document.querySelectorAll('.fade-in-section');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        fadeInSections.forEach(section => {
+            observer.observe(section);
+        });
+
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        };
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
